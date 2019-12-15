@@ -22,7 +22,7 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 DEVICE_PACKAGE_OVERLAYS += device/bn/acclaim/overlay/cm
 
-PRODUCT_NAME := cm_acclaim
+PRODUCT_NAME := lineage_acclaim
 PRODUCT_DEVICE := acclaim
 PRODUCT_MODEL := Barnes & Noble Nook Tablet
 PRODUCT_RELEASE_NAME := NookTablet
