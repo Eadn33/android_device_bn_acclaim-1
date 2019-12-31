@@ -69,7 +69,7 @@ TARGET_BOOTLOADER_BOARD_NAME := acclaim
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
-TARGET_KERNEL_CONFIG := lineageos_acclaim_defconfig
+TARGET_KERNEL_CONFIG := aosp_acclaim_defconfig
 TARGET_KERNEL_SOURCE := kernel/bn/acclaim
 
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := $(DEVICE_FOLDER)/releasetools/img_from_target_files
