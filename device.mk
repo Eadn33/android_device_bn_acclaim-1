@@ -30,6 +30,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/prebuilt/etc/audio_policy.conf:/system/etc/audio_policy.conf \
 	$(DEVICE_FOLDER)/prebuilt/etc/media_codecs.xml:/system/etc/media_codecs.xml \
+	$(DEVICE_FOLDER)/prebuilt/etc/media_codecs_performance.xml:/system/etc/media_codecs_performance.xml \
 	$(DEVICE_FOLDER)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
@@ -108,6 +109,7 @@ PRODUCT_COPY_FILES += \
 	$(call add-to-product-copy-files-if-exists,packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml) \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
 
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
@@ -142,12 +144,23 @@ PRODUCT_PACKAGES += \
 
 # platform
 $(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
+# this is in unlegacy, removed by dr marble commit? $(call inherit-product, hardware/ti/omap4/pvr-km.mk)
 
 # blobs
 $(call inherit-product, vendor/bn/acclaim/acclaim-vendor.mk)
-
+# unlegacy $(call inherit-product-if-exists, vendor/ti/omap4/omap4-vendor.mk)
+# unlegacy $(call inherit-product-if-exists, vendor/bn/acclaim/acclaim-vendor.mk)
+# unlegacy $(call inherit-product-if-exists, vendor/widevine/arm-generic/widevine-vendor.mk)
 # mem
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
-
+# more unlegacy
+#PRODUCT_PROPERTY_OVERRIDES += \
+   # dalvik.vm.heapstartsize=8m \
+   # dalvik.vm.heapgrowthlimit=128m \
+   # dalvik.vm.heapsize=256m \
+   # dalvik.vm.heaptargetutilization=0.75 \
+  #  dalvik.vm.heapminfree=512k \
+  #  dalvik.vm.heapmaxfree=8m
 # wifi
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+#Unlegacy $(call inherit-product, hardware/ti/wlan/mac80211/wl12xx-wlan-modules.mk)
