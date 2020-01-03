@@ -15,13 +15,17 @@
 # Inherit device configuration for acclaim
 
 $(call inherit-product, device/bn/acclaim/full_acclaim.mk)
-$(call inherit-product-if-exists, vendor/aosp/common.mk)
-TARGET_SCREEN_WIDTH := 480
-TARGET_SCREEN_HEIGHT := 1024
-TARGET_BOOTANIMATION_HALF_RES := true
 
-DEVICE_PACKAGE_OVERLAYS += device/bn/acclaim/overlay/aosp
+DEVICE_FOLDER := device/bn/acclaim
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_FOLDER)/prebuilt/etc/media_codecs_ffmpeg.xml.stub:/system/etc/media_codecs_ffmpeg.xml
+
+# Shells
+PRODUCT_PACKAGES += \
+    Launcher3 \
+    Terminal
+    
 PRODUCT_NAME := aosp_acclaim
 PRODUCT_DEVICE := acclaim
 PRODUCT_MODEL := Barnes & Noble Nook Tablet
